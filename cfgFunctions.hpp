@@ -4,7 +4,7 @@ class VCOM
 	
 	class FSM
 	{
-		file = "Vcom\FSMS";
+		file = STRINGIFY(VCOM_PREFIX\FSMS);
 		
 		// group spawn VCM_fnc_SQUADBEH
 		class SQUADBEH 
@@ -28,7 +28,7 @@ class VCOM
 	
 	class Functions 
 	{
-		file = "Vcom\Functions\VCM_Functions";
+		file = STRINGIFY(VCOM_PREFIX\Functions\VCM_Functions);
 		
 		// [unitToRearm, rearmLocation] spawn VCM_fnc_ActRearm
 		class ActRearm {};

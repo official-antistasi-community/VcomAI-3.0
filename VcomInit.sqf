@@ -1,3 +1,5 @@
+#include "common_includes.hpp"
+
 //Parameters
 VCM_PublicScript = compileFinal "[] call (_this select 0);";
 VCM_ServerAsk = compileFinal "(_this select 1) publicVariableClient (_this select 0);";
@@ -6,22 +8,22 @@ if (isServer) then
 {
 	if (isFilePatchingEnabled) then
 	{
-		private _Filecheck = loadFile "\userconfig\VCOM_AI\AISettingsV3.hpp";
+		private _Filecheck = loadFile STRINGIFY(VCOM_PREFIX\userconfig\VCOM_AI\AISettingsV3.hpp);
 
 		if !(_FileCheck isEqualTo "") then
 		{
-			[] call compile preprocessFileLineNumbers "\userconfig\VCOM_AI\AISettingsV3.hpp";
+			[] call compile preprocessFileLineNumbers STRINGIFY(VCOM_PREFIX\userconfig\VCOM_AI\AISettingsV3.hpp);
 			[Vcm_Settings] remoteExec ["VCM_PublicScript",0,false];
 		}
 		else
 		{
-			[] call compile preprocessFileLineNumbers "Vcom\Functions\VCOMAI_DefaultSettings.sqf";
+			[] call compile preprocessFileLineNumbers STRINGIFY(VCOM_PREFIX\Functions\VCOMAI_DefaultSettings.sqf);
 			[Vcm_Settings] remoteExec ["VCM_PublicScript",0,false];
 		};
 	}
 	else
 	{
-			[] call compile preprocessFileLineNumbers "Vcom\Functions\VCOMAI_DefaultSettings.sqf";
+			[] call compile preprocessFileLineNumbers STRINGIFY(VCOM_PREFIX\Functions\VCOMAI_DefaultSettings.sqf);
 			[Vcm_Settings] remoteExec ["VCM_PublicScript",0,false];
 	};
 }
