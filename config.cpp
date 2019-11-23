@@ -1,7 +1,7 @@
 #include "common_includes.hpp"
 
 //Extra config needed if we build VCOM as an addon, rather than integrate it into a mission.
-#ifdef BUILD_VCOM_AS_ADDON
+#ifndef USE_VCOM_IN_MISSION
 #include "BIS_AddonInfo.hpp"
 class CfgPatches 
 {
@@ -26,7 +26,7 @@ class CfgFunctions
 			class Init
 			{
 				file = STRINGIFY(VCOM_PREFIX\VcomInit.sqf);
-				#ifdef BUILD_VCOM_AS_ADDON
+				#ifndef USE_VCOM_IN_MISSION
 				postInit = 1;
 				#endif
 			};
